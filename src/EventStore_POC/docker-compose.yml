@@ -1,6 +1,6 @@
 eventstore_db:
     image: eventstore/eventstore
-    command: --dev --enable-external-tcp --ext-ip=0.0.0.0 --int-ip=0.0.0.0 --disable-external-tcp-tls
+    command: --dev --enable-external-tcp --ext-ip=0.0.0.0 --int-ip=0.0.0.0 --disable-external-tcp-tls --run-projections=all --start-standard-projections=true
     environment:
       - EVENTSTORE_CLUSTER_SIZE=1
       - EVENTSTORE_INT_TCP_PORT=1112

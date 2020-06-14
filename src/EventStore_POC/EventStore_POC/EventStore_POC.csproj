@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\docker-compose.yml" Link="docker-compose.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EventStore.Client" Version="20.6.0" />
   </ItemGroup>
 

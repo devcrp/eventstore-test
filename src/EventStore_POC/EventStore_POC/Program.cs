@@ -2,7 +2,11 @@
 using EventStore.ClientAPI.Exceptions;
 using EventStore.ClientAPI.Projections;
 using EventStore.ClientAPI.SystemData;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +20,15 @@ namespace EventStore_POC
             Console.WriteLine("Connecting to EventStore...");
             IEventStoreConnection conn = await GetEventStoreConnection();
             Console.WriteLine("Connected!");
+
+            //foreach (string f in Directory.GetFiles("../../../../sample-data/", "shoppingCart-*"))
+            //{
+            //    var streamName = Path.GetFileNameWithoutExtension(f);
+
+            //    var step3EventData = JsonConvert.DeserializeObject<List<EventDataWrapper>>(File.ReadAllText(f)).Select(x => x.ToEventData());
+            //    var eventData = step3EventData.ToArray();
+            //    await conn.AppendToStreamAsync(streamName, ExpectedVersion.Any, eventData);
+            //}
 
             do
             {
