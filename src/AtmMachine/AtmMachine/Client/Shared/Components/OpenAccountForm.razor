@@ -1,0 +1,30 @@
+﻿@using AtmMachine.Shared.Dtos 
+
+<FormRow>
+    <Column>
+        <FieldLabel>Name</FieldLabel>
+        <TextEdit @bind-Text="Model.Name"></TextEdit>
+    </Column>
+    <Column>
+        <FieldLabel>Surname</FieldLabel>
+        <TextEdit @bind-Text="Model.Surname"></TextEdit>
+    </Column>
+</FormRow>
+<FormRow>
+    <Column ColumnSize="ColumnSize.Is2">
+        <FieldLabel>Initial deposit</FieldLabel>
+        <NumericEdit TValue="decimal" DecimalsSeparator="." @bind-Value="Model.InitialDeposit"></NumericEdit>
+    </Column>
+</FormRow>
+<FormRow>
+    <Column>
+        <Button Color="Color.Primary">@(GetButtonText())</Button>
+    </Column>
+</FormRow>
+
+@code {
+
+    public AccountCreationDto Model { get; set; } = new AccountCreationDto();
+
+    public string GetButtonText() => $"Create account with {Model.InitialDeposit}€ deposit";
+}
