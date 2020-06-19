@@ -3,25 +3,45 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Server", "AtmMachine\Server\AtmMachine.Server.csproj", "{ADCEB3DA-E007-486A-BA81-E653852CB7BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmMachine.Server", "AtmMachine\Server\AtmMachine.Server.csproj", "{ADCEB3DA-E007-486A-BA81-E653852CB7BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Client", "AtmMachine\Client\AtmMachine.Client.csproj", "{627A1389-6EB6-4958-9533-6E733E437CA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmMachine.Client", "AtmMachine\Client\AtmMachine.Client.csproj", "{627A1389-6EB6-4958-9533-6E733E437CA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Shared", "AtmMachine\Shared\AtmMachine.Shared.csproj", "{4FC21574-5ED2-4044-B4F6-335A130B95A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmMachine.Shared", "AtmMachine\Shared\AtmMachine.Shared.csproj", "{4FC21574-5ED2-4044-B4F6-335A130B95A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "__sample", "__sample", "{2AE492FE-5FE5-4EBC-8F19-B385A33F9EFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1.Server", "BlazorApp1\Server\BlazorApp1.Server.csproj", "{B7E884ED-843E-4880-969A-33DCC5AC6C51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1.Server", "BlazorApp1\Server\BlazorApp1.Server.csproj", "{B7E884ED-843E-4880-969A-33DCC5AC6C51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1.Client", "BlazorApp1\Client\BlazorApp1.Client.csproj", "{06E75116-DE72-45A3-AF6C-203EAA1162F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1.Client", "BlazorApp1\Client\BlazorApp1.Client.csproj", "{06E75116-DE72-45A3-AF6C-203EAA1162F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1.Shared", "BlazorApp1\Shared\BlazorApp1.Shared.csproj", "{E69B1252-45FE-4383-A807-A6F112AC695D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1.Shared", "BlazorApp1\Shared\BlazorApp1.Shared.csproj", "{E69B1252-45FE-4383-A807-A6F112AC695D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4DCABEB1-A320-434A-AF91-788000906323}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2B19977F-513C-49F5-A717-CB455E6DB4FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Server.Tests", "AtmMachine.Server.Tests\AtmMachine.Server.Tests.csproj", "{7B6A8F60-DE11-4559-BDAF-7A30C4D961D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmMachine.Server.Tests", "AtmMachine.Server.Tests\AtmMachine.Server.Tests.csproj", "{7B6A8F60-DE11-4559-BDAF-7A30C4D961D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{454E1130-020F-4138-8430-13A15AFD5FE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Domain", "AtmMachine.Domain\AtmMachine.Domain.csproj", "{544FD96C-C656-4F85-BADA-8C86C53A4070}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Domain.Tests", "AtmMachine.Domain.Tests\AtmMachine.Domain.Tests.csproj", "{ABA140DE-0F0F-4008-8DD4-57F5A18520A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{70B82AAA-A791-4868-828D-60580BE99CAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{1D3DBA6E-D63B-42C8-97AF-6B055433DBF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Application", "AtmMachine.Application\AtmMachine.Application.csproj", "{14BE957C-9B34-48A6-9B5A-20961924A5EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4AE790C6-8689-4463-8BBD-C7853D6E0494}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Application.Tests", "AtmMachine.Application.Tests\AtmMachine.Application.Tests.csproj", "{D110FF5C-0AC9-4EAE-B178-EF9DF78AF53B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B70AD2FF-41C2-461C-9DD7-23F112935DF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Infrastructure", "AtmMachine.Infrastructure\AtmMachine.Infrastructure.csproj", "{FCD0699E-E0E3-48C6-A42D-0D8FE4869A73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +77,26 @@ Global
 		{7B6A8F60-DE11-4559-BDAF-7A30C4D961D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B6A8F60-DE11-4559-BDAF-7A30C4D961D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B6A8F60-DE11-4559-BDAF-7A30C4D961D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{544FD96C-C656-4F85-BADA-8C86C53A4070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544FD96C-C656-4F85-BADA-8C86C53A4070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544FD96C-C656-4F85-BADA-8C86C53A4070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544FD96C-C656-4F85-BADA-8C86C53A4070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA140DE-0F0F-4008-8DD4-57F5A18520A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA140DE-0F0F-4008-8DD4-57F5A18520A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA140DE-0F0F-4008-8DD4-57F5A18520A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA140DE-0F0F-4008-8DD4-57F5A18520A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14BE957C-9B34-48A6-9B5A-20961924A5EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14BE957C-9B34-48A6-9B5A-20961924A5EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14BE957C-9B34-48A6-9B5A-20961924A5EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14BE957C-9B34-48A6-9B5A-20961924A5EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D110FF5C-0AC9-4EAE-B178-EF9DF78AF53B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D110FF5C-0AC9-4EAE-B178-EF9DF78AF53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D110FF5C-0AC9-4EAE-B178-EF9DF78AF53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D110FF5C-0AC9-4EAE-B178-EF9DF78AF53B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCD0699E-E0E3-48C6-A42D-0D8FE4869A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCD0699E-E0E3-48C6-A42D-0D8FE4869A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCD0699E-E0E3-48C6-A42D-0D8FE4869A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCD0699E-E0E3-48C6-A42D-0D8FE4869A73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +110,13 @@ Global
 		{E69B1252-45FE-4383-A807-A6F112AC695D} = {2AE492FE-5FE5-4EBC-8F19-B385A33F9EFA}
 		{2B19977F-513C-49F5-A717-CB455E6DB4FE} = {4DCABEB1-A320-434A-AF91-788000906323}
 		{7B6A8F60-DE11-4559-BDAF-7A30C4D961D9} = {2B19977F-513C-49F5-A717-CB455E6DB4FE}
+		{544FD96C-C656-4F85-BADA-8C86C53A4070} = {454E1130-020F-4138-8430-13A15AFD5FE5}
+		{ABA140DE-0F0F-4008-8DD4-57F5A18520A8} = {70B82AAA-A791-4868-828D-60580BE99CAD}
+		{70B82AAA-A791-4868-828D-60580BE99CAD} = {454E1130-020F-4138-8430-13A15AFD5FE5}
+		{14BE957C-9B34-48A6-9B5A-20961924A5EF} = {1D3DBA6E-D63B-42C8-97AF-6B055433DBF7}
+		{4AE790C6-8689-4463-8BBD-C7853D6E0494} = {1D3DBA6E-D63B-42C8-97AF-6B055433DBF7}
+		{D110FF5C-0AC9-4EAE-B178-EF9DF78AF53B} = {4AE790C6-8689-4463-8BBD-C7853D6E0494}
+		{FCD0699E-E0E3-48C6-A42D-0D8FE4869A73} = {B70AD2FF-41C2-461C-9DD7-23F112935DF1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F0D76AB4-9FA8-4D95-A4BD-21E9DB205F0E}
