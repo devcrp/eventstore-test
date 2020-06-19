@@ -16,5 +16,10 @@ namespace AtmMachine.Infrastructure.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public void Persist()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

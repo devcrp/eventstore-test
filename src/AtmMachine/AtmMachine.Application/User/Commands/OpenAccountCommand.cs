@@ -16,7 +16,7 @@ namespace AtmMachine.Application.Services
             this._repository = repository;
         }
 
-        public void OpenAccount(Guid userId, decimal initialDeposit)
+        public Guid Run(Guid userId, decimal initialDeposit)
         {
             User user = _repository.Get<User>(userId);
             Account newAccount = user.OpenAccount(initialDeposit);
@@ -25,6 +25,8 @@ namespace AtmMachine.Application.Services
             _repository.Insert(newAccount.Movements.Single());
 
             _repository.Persist();
+
+            return newAccount.Id;
         }
     }
 }
