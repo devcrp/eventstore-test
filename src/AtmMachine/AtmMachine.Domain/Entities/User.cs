@@ -8,9 +8,9 @@ namespace AtmMachine.Domain.Entities
 {
     public class User : IEntity
     {
-        public Guid Id { get; }
-        public string Name { get; }
-        public string Surname { get; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
 
         public static User Create(string name, string surname) => new User(name, surname);
 

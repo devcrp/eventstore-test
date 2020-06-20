@@ -7,7 +7,7 @@ namespace AtmMachine.Domain.Entities
     public class Account : IEntity
     {
         public Guid Id { get; set; }
-        public Guid UserId { get; }
+        public Guid UserId { get; set; }
 
         public static Account Create(Guid userId) => new Account(userId);
 

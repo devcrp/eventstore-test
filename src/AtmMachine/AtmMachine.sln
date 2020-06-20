@@ -52,6 +52,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{71247226
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.Infrastructure.Tests", "AtmMachine.Infrastructure.Tests\AtmMachine.Infrastructure.Tests.csproj", "{290E280F-5F78-4001-AE48-C5454C7CC086}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Processes", "_Processes", "{B398E440-E9DF-47AE-ADC9-8CD22E4094F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmMachine.SeedJob", "AtmMachine.SeedJob\AtmMachine.SeedJob.csproj", "{A7FD4A91-81D0-4FB3-8F6D-714E9056B953}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +114,10 @@ Global
 		{290E280F-5F78-4001-AE48-C5454C7CC086}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{290E280F-5F78-4001-AE48-C5454C7CC086}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{290E280F-5F78-4001-AE48-C5454C7CC086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7FD4A91-81D0-4FB3-8F6D-714E9056B953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7FD4A91-81D0-4FB3-8F6D-714E9056B953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7FD4A91-81D0-4FB3-8F6D-714E9056B953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7FD4A91-81D0-4FB3-8F6D-714E9056B953}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +140,7 @@ Global
 		{FCD0699E-E0E3-48C6-A42D-0D8FE4869A73} = {B70AD2FF-41C2-461C-9DD7-23F112935DF1}
 		{71247226-BB7F-4235-8333-DBEE89B06A57} = {B70AD2FF-41C2-461C-9DD7-23F112935DF1}
 		{290E280F-5F78-4001-AE48-C5454C7CC086} = {71247226-BB7F-4235-8333-DBEE89B06A57}
+		{A7FD4A91-81D0-4FB3-8F6D-714E9056B953} = {B398E440-E9DF-47AE-ADC9-8CD22E4094F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F0D76AB4-9FA8-4D95-A4BD-21E9DB205F0E}

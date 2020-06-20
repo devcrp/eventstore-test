@@ -23,7 +23,6 @@ namespace AtmMachine.Infrastructure.Tests
             });
 
             EsConnection esConnection = new EsConnection(esOptions);
-            await esConnection.ConnectAsync();
             EsRepository esRepository = new EsRepository(esConnection);
 
             await esRepository.AddEventAsync<Movement>("test-1", "test", Movement.Create(Guid.NewGuid(), 100, "test"));

@@ -36,7 +36,6 @@ namespace AtmMachine.Application.Tests
             });
 
             EsConnection esConnection = new EsConnection(esOptions);
-            await esConnection.ConnectAsync();
             _EsRepository = new EsRepository(esConnection);
         }
 

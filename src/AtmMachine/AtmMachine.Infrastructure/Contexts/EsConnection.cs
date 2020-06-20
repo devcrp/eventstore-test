@@ -17,11 +17,7 @@ namespace AtmMachine.Infrastructure.Contexts
         public EsConnection(IOptions<EsConnectionOptions> options)
         {
             this._options = options;
-        }
-
-        public async Task ConnectAsync()
-        {
-            Connection = await GetConnection(_options.Value.ConnectionString);
+            Connection = GetConnection(_options.Value.ConnectionString).Result;
         }
 
         private static async Task<IEventStoreConnection> GetConnection(string connectionString)
