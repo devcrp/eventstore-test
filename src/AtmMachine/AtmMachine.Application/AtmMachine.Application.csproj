@@ -8,8 +8,4 @@
     <ProjectReference Include="..\AtmMachine.Domain\AtmMachine.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Base\" />
-  </ItemGroup>
-
 </Project>

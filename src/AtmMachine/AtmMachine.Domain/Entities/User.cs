@@ -1,17 +1,22 @@
-﻿using System;
+﻿using AtmMachine.Domain.ValueObjects.Results;
+using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace AtmMachine.Domain.Entities
 {
-    public class User
+    public class User : IEntity
     {
         public Guid Id { get; }
         public string Name { get; }
         public string Surname { get; }
 
         public static User Create(string name, string surname) => new User(name, surname);
+
+        public User()
+        {
+        }
 
         private User(string name, string surname)
         {
@@ -22,11 +27,11 @@ namespace AtmMachine.Domain.Entities
 
         public List<Account> GetAccounts() => new List<Account>();
 
-        public Account OpenAccount(decimal initialDeposit)
+        public OpenAccountResult OpenAccount(decimal initialDeposit)
         {
             Account newAccount = Account.Create(Id);
-            newAccount.RegisterMovement(initialDeposit, "Initial Deposit");
-            return newAccount;
+            Movement initialMovement = newAccount.RegisterMovement(initialDeposit, "Initial Deposit");
+            return OpenAccountResult.Create(newAccount, initialMovement);
         }
     }
 }

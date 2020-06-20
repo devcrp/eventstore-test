@@ -1,4 +1,5 @@
 ﻿using AtmMachine.Domain.Entities;
+using AtmMachine.Domain.ValueObjects.Results;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -28,10 +29,10 @@ namespace AtmMachine.Domain.Tests
         [Test]
         public void Open_Account_Should_Link_A_New_Account_To_The_User_And_Have_The_Initial_Movement()
         {
-            Account newAccount = _User.OpenAccount(initialDeposit: 100.50m);
+            OpenAccountResult result = _User.OpenAccount(initialDeposit: 100.50m);
 
-            Assert.AreEqual(_User.Id, newAccount.UserId);
-            Assert.AreEqual(1, newAccount.Movements.Count);
+            Assert.AreEqual(_User.Id, result.Account.UserId);
+            Assert.IsNotNull(result.Movement);
         }
     }
 }

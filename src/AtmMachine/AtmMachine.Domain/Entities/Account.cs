@@ -4,13 +4,16 @@ using System.Text;
 
 namespace AtmMachine.Domain.Entities
 {
-    public class Account
+    public class Account : IEntity
     {
         public Guid Id { get; set; }
         public Guid UserId { get; }
-        public List<Movement> Movements { get; private set; } = new List<Movement>();
 
         public static Account Create(Guid userId) => new Account(userId);
+
+        private Account()
+        {
+        }
 
         private Account(Guid userId)
         {
@@ -20,9 +23,7 @@ namespace AtmMachine.Domain.Entities
 
         public Movement RegisterMovement(decimal amount, string subject)
         {
-            Movement movement = Movement.Create(Id, amount, subject);
-            Movements.Add(movement);
-            return movement;
+            return Movement.Create(Id, amount, subject);
         }
     }
 }
