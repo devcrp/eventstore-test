@@ -6,13 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.8.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AtmMachine.Application\AtmMachine.Application.csproj" />
     <ProjectReference Include="..\AtmMachine.Infrastructure\AtmMachine.Infrastructure.csproj" />
+    <ProjectReference Include="..\AtmMachine.Jobs.Shared\AtmMachine.Jobs.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@
 using AtmMachine.Domain.ValueObjects;
 using AtmMachine.Infrastructure.Contexts;
 using EventStore.ClientAPI;
+using EventStore.ClientAPI.SystemData;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,12 @@ namespace AtmMachine.Infrastructure.Repositories
 {
     public class EsRepository : IEventRepository
     {
-        private readonly EsConnection _esConnection;
-        private IEventStoreConnection Connection => _esConnection.Connection;
+        private readonly EsConnection _esConnectionConfig;
+        private IEventStoreConnection Connection => _esConnectionConfig.Connection;
 
         public EsRepository(EsConnection esConnection)
         {
-            this._esConnection = esConnection;
+            this._esConnectionConfig = esConnection;
         }
 
         public Task AddEventAsync<T>(string stream, string @event, T entity) where T : class, IEntity
@@ -44,6 +45,18 @@ namespace AtmMachine.Infrastructure.Repositories
                                             });
 
             return events.ToList();
+        }
+
+        public async Task CreateSubscription(string stream, string name)
+        {
+            try
+            {
+                var settings = PersistentSubscriptionSettings.Create().DoNotResolveLinkTos().StartFromCurrent();
+                await Connection.CreatePersistentSubscriptionAsync(stream, groupName, settings, _esConnectionConfig.GetUserCredentials());
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

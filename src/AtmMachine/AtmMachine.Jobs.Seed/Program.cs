@@ -6,59 +6,55 @@ using AtmMachine.Domain.Services;
 using AtmMachine.Infrastructure.Contexts;
 using AtmMachine.Infrastructure.Contexts.Options;
 using AtmMachine.Infrastructure.Repositories;
+using AtmMachine.Jobs.Shared;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace AtmMachine.SeedJob
+namespace AtmMachine.Jobs.Seed
 {
     class Program
     {
         static ServiceProvider _serviceProvider;
         static ILogger _logger;
+        const int ITEMS_TO_ADD = 10_000;
 
         static async Task Main(string[] args)
         {
-            SetupDI();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
-            Console.Write("Ready to populate data. Continue? (y/n) ");
-            bool confirm = Console.ReadLine() == "y";
-
-            if (confirm)
-            {
-                await SeedData();
-            }
-
-            Console.ReadKey();
-        }
-
-        static void SetupDI()
-        {
-            _serviceProvider = new ServiceCollection()
-                .AddLogging(config => config.AddConsole())
-                .AddSingleton<IEventRepository, EsRepository>()
-                .AddSingleton<EsConnection>()
-                .Configure<EsConnectionOptions>(x => x.ConnectionString = "ConnectTo=tcp://admin:changeit@localhost:1113")
-                .BuildServiceProvider();
+            ConsoleColors.SetInitialColors(ConsoleColor.Green, ConsoleColor.Black);
+            Console.WriteLine("Starting...");
+            _serviceProvider = JobDependencyInjection.Setup();
 
             _logger = _serviceProvider.GetService<ILoggerFactory>().CreateLogger<Program>();
+
+            await SeedData();
+
+            Console.WriteLine($"Completed in {Math.Round((double)stopwatch.ElapsedMilliseconds / 1_000, 2)}s");
+            Console.ReadKey();
         }
 
         static async Task SeedData()
         {
             Guid accountId = Guid.NewGuid();
             IEventRepository eventRepository = _serviceProvider.GetService<IEventRepository>();
-            const int to = 10_000;
             Console.Clear();
-            for (int i = 0; i < to; i++)
+            for (int i = 0; i < ITEMS_TO_ADD; i++)
             {
+
+                double d = (double)((((decimal)i + 1) / (decimal)ITEMS_TO_ADD) * 100);
+
                 Console.SetCursorPosition(0, 0);
-                Console.WriteLine($"Inserted {i + 1} of {to}");
+                Console.WriteLine($"Inserted {i + 1} of {ITEMS_TO_ADD} --> {Math.Round(d, 2)}% ");
 
                 Movement movement = Movement.Create(accountId, GetRandomAmount(), $"Seed Movement {i}");
-                await eventRepository.AddEventAsync<Movement>("_" + StreamNameProvider.Get<Account>(accountId),
+                await eventRepository.AddEventAsync<Movement>(StreamNameProvider.Get<Account>(accountId),
                                                                 EventType.GetByAmount(movement.Amount),
                                                                 movement);
             }

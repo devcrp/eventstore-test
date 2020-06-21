@@ -1,8 +1,10 @@
 ﻿using AtmMachine.Infrastructure.Contexts.Options;
 using EventStore.ClientAPI;
+using EventStore.ClientAPI.SystemData;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +21,8 @@ namespace AtmMachine.Infrastructure.Contexts
             this._options = options;
             Connection = GetConnection(_options.Value.ConnectionString).Result;
         }
+
+        public UserCredentials GetUserCredentials() => new UserCredentials(_options.Value.User, _options.Value.Password);
 
         private static async Task<IEventStoreConnection> GetConnection(string connectionString)
         {

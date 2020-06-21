@@ -11,5 +11,7 @@ namespace AtmMachine.Domain
         Task AddEventAsync<T>(string stream, string @event, T entity) where T : class, IEntity;
 
         Task<List<Event<T>>> GetEventsAsync<T>(string stream);
+
+        Task CreateSubscription(string stream, string name);
     }
 }
