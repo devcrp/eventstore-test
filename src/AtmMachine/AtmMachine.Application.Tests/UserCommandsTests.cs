@@ -20,7 +20,7 @@ namespace AtmMachine.Application.Tests
         EsRepository _EsRepository;
 
         [SetUp]
-        public async Task Setup()
+        public void Setup()
         {
             var options = new DbContextOptionsBuilder<EfContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())

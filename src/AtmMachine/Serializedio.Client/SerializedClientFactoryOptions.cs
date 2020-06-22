@@ -7,7 +7,7 @@ namespace Serializedio.Client
 {
     public class SerializedClientFactoryOptions
     {
-        public Uri BaseUri { get; set; }
+        public string BaseUrl { get; set; }
 
         public string AccessKey { get; set; }
 

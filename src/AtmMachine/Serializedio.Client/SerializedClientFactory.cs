@@ -20,7 +20,7 @@ namespace Serializedio.Client
             optionsAction.Invoke(options);
             _serializedClientFactoryOptions = options;
 
-            _httpClient.BaseAddress = options.BaseUri;
+            _httpClient.BaseAddress = new Uri(options.BaseUrl);
         }
 
         public AggregatesClient CreateAggregatesClient() => new AggregatesClient(_httpClient, _serializedClientFactoryOptions);

@@ -11,4 +11,10 @@
     <ProjectReference Include="..\AtmMachine.Jobs.Shared\AtmMachine.Jobs.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="secrets.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

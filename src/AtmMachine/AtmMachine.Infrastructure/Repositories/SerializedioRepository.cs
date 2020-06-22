@@ -3,8 +3,10 @@ using AtmMachine.Domain.ValueObjects;
 using Microsoft.Extensions.Options;
 using Serializedio.Client;
 using Serializedio.Client.Aggregates;
+using Serializedio.Client.Responses;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,19 +23,25 @@ namespace AtmMachine.Infrastructure.Repositories
                                                               {
                                                                   options.AccessKey = connectionOptions.Value.AccessKey;
                                                                   options.SecretAccessKey = connectionOptions.Value.SecretAccessKey;
-                                                                  options.BaseUri = connectionOptions.Value.BaseUri;
+                                                                  options.BaseUrl = connectionOptions.Value.BaseUrl;
                                                               });
 
             _aggregatesClient = serializedClientFactory.CreateAggregatesClient();
         }
 
-        public Task<List<Event<T>>> GetEventsAsync<T>(string streamName, Guid streamId)
+        public async Task<List<Event<T>>> GetEventsAsync<T>(string streamName, Guid streamId)
         {
-            throw new NotImplementedException();
+            streamName = streamName.ToLower();
+            AggregateResponse<T> events = await _aggregatesClient.GetAsync<T>(streamName, streamId);
+            return events.Events.Select(x => new Event<T>
+            {
+                Data = x.Data
+            }).ToList();
         }
 
         public async Task AddEventAsync<T>(string streamName, Guid streamId, string @event, T entity) where T : class, IEntity
         {
+            streamName = streamName.ToLower();
             HttpResponseMessage response = await _aggregatesClient.AddEventAsync(streamName, 
                                                                                 streamId, 
                                                                                 new Serializedio.Client.Types.Event<T>()
@@ -44,7 +52,13 @@ namespace AtmMachine.Infrastructure.Repositories
                                                                                 });
 
             if (!response.IsSuccessStatusCode)
+            {
+#if DEBUG
+                string t = await response.Content.ReadAsStringAsync();
+#endif
+
                 throw new Exception($"Response for {nameof(AddEventAsync)} was not OK.");
+            }
         }
     }
 }
