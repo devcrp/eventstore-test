@@ -30,7 +30,8 @@ namespace AtmMachine.Application.Users.Commands
             _dbRepository.Insert(result.Account);
             _dbRepository.Persist();
 
-            await _eventRepository.AddEventAsync(StreamNameProvider.Get(result.Account),
+            await _eventRepository.AddEventAsync(nameof(Account), 
+                                            result.Account.Id,
                                             result.Movement.Amount >= 0 ? EventType.Deposit : EventType.Withdraw,
                                             result.Movement);
 

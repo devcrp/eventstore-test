@@ -25,8 +25,9 @@ namespace AtmMachine.Infrastructure.Tests
             EsConnection esConnection = new EsConnection(esOptions);
             EsRepository esRepository = new EsRepository(esConnection);
 
-            await esRepository.AddEventAsync<Movement>("test-1", "test", Movement.Create(Guid.NewGuid(), 100, "test"));
-            List<Event<Movement>> result = await esRepository.GetEventsAsync<Movement>("test-1");
+            Guid id = Guid.NewGuid();
+            await esRepository.AddEventAsync<Movement>("test", id, "test", Movement.Create(Guid.NewGuid(), 100, "test"));
+            List<Event<Movement>> result = await esRepository.GetEventsAsync<Movement>("test", id);
 
             Assert.AreNotEqual(0, result.Count);
         }

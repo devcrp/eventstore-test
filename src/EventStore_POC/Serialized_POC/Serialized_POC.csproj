@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AtmMachine.Jobs.Shared\AtmMachine.Jobs.Shared.csproj" />
+    <ProjectReference Include="..\Serializedio.Client\Serializedio.Client.csproj" />
   </ItemGroup>
 
 </Project>

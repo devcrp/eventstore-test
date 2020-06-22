@@ -22,8 +22,10 @@ namespace AtmMachine.Infrastructure.Repositories
             this._esConnectionConfig = esConnection;
         }
 
-        public Task AddEventAsync<T>(string stream, string @event, T entity) where T : class, IEntity
+        public Task AddEventAsync<T>(string streamName, Guid streamId, string @event, T entity) where T : class, IEntity
         {
+            string stream = $"{streamName}-{streamId}";
+
             string data = JsonConvert.SerializeObject(entity);
             string metadata = JsonConvert.SerializeObject(new { TimestampUtc = DateTime.UtcNow });
 
@@ -36,8 +38,10 @@ namespace AtmMachine.Infrastructure.Repositories
             return Connection.AppendToStreamAsync(stream, ExpectedVersion.Any, eventPayload);
         }
 
-        public async Task<List<Event<T>>> GetEventsAsync<T>(string stream)
+        public async Task<List<Event<T>>> GetEventsAsync<T>(string streamName, Guid streamId)
         {
+            string stream = $"{streamName}-{streamId}";
+
             StreamEventsSlice result = await Connection.ReadStreamEventsBackwardAsync(stream, StreamPosition.End, 10, true);
             IEnumerable<Event<T>> events = result.Events.Select(x => new Event<T>
                                             {
@@ -45,18 +49,6 @@ namespace AtmMachine.Infrastructure.Repositories
                                             });
 
             return events.ToList();
-        }
-
-        public async Task CreateSubscription(string stream, string name)
-        {
-            try
-            {
-                var settings = PersistentSubscriptionSettings.Create().DoNotResolveLinkTos().StartFromCurrent();
-                await Connection.CreatePersistentSubscriptionAsync(stream, groupName, settings, _esConnectionConfig.GetUserCredentials());
-            }
-            catch (Exception)
-            {
-            }
         }
     }
 }

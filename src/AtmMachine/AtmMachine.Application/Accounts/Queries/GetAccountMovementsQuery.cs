@@ -20,8 +20,7 @@ namespace AtmMachine.Application.Accounts.Queries
 
         public Task<List<Event<Movement>>> Get(Guid accountId)
         {
-            string streamName = StreamNameProvider.Get<Account>(accountId);
-            return _eventRepository.GetEventsAsync<Movement>(streamName);
+            return _eventRepository.GetEventsAsync<Movement>(nameof(Account), accountId);
         }
     }
 }

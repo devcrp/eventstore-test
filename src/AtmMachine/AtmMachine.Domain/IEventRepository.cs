@@ -8,10 +8,8 @@ namespace AtmMachine.Domain
 {
     public interface IEventRepository
     {
-        Task AddEventAsync<T>(string stream, string @event, T entity) where T : class, IEntity;
+        Task AddEventAsync<T>(string streamName, Guid streamId, string @event, T entity) where T : class, IEntity;
 
-        Task<List<Event<T>>> GetEventsAsync<T>(string stream);
-
-        Task CreateSubscription(string stream, string name);
+        Task<List<Event<T>>> GetEventsAsync<T>(string streamName, Guid streamId);
     }
 }

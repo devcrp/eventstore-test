@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AtmMachine.Domain\AtmMachine.Domain.csproj" />
+    <ProjectReference Include="..\Serializedio.Client\Serializedio.Client.csproj" />
   </ItemGroup>
 
 </Project>

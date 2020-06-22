@@ -54,7 +54,8 @@ namespace AtmMachine.Jobs.Seed
                 Console.WriteLine($"Inserted {i + 1} of {ITEMS_TO_ADD} --> {Math.Round(d, 2)}% ");
 
                 Movement movement = Movement.Create(accountId, GetRandomAmount(), $"Seed Movement {i}");
-                await eventRepository.AddEventAsync<Movement>(StreamNameProvider.Get<Account>(accountId),
+                await eventRepository.AddEventAsync<Movement>(nameof(Account), 
+                                                                accountId,
                                                                 EventType.GetByAmount(movement.Amount),
                                                                 movement);
             }
