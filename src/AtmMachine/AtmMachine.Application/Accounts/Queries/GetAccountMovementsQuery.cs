@@ -18,7 +18,7 @@ namespace AtmMachine.Application.Accounts.Queries
             this._eventRepository = eventRepository;
         }
 
-        public Task<List<Event<Movement>>> Get(Guid accountId)
+        public Task<List<Event<Movement>>> GetAsync(Guid accountId)
         {
             return _eventRepository.GetEventsAsync<Movement>(nameof(Account), accountId);
         }

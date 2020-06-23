@@ -17,7 +17,7 @@ namespace AtmMachine.Application.Tests
     public class UserCommandsTests
     {
         EfRepository _EfRepository;
-        EsRepository _EsRepository;
+        TestEventsRepository _EsRepository;
 
         [SetUp]
         public void Setup()
@@ -30,13 +30,7 @@ namespace AtmMachine.Application.Tests
             EfContext context = new EfContext(options);
             _EfRepository = new EfRepository(context);
 
-            IOptions<EsConnectionOptions> esOptions = Options.Create<EsConnectionOptions>(new EsConnectionOptions()
-            {
-                ConnectionString = "ConnectTo=tcp://admin:changeit@localhost:1113"
-            });
-
-            EsConnection esConnection = new EsConnection(esOptions);
-            _EsRepository = new EsRepository(esConnection);
+            _EsRepository = new TestEventsRepository();
         }
 
         [Test]
